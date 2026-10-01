@@ -20,6 +20,22 @@ class ConfirmacionLab2Test {
     @Mock Notificador notificador;
 
     @Test
+    void reservaNulaNoConsultaDependencias() {
+        // Arrange: sin stubbing, porque una reserva nula no debe consultar nada.
+        ReservaService servicio = new ReservaService(disponibilidad, repository, notificador);
+
+        // Act
+        IllegalArgumentException error = assertThrows(IllegalArgumentException.class,
+                () -> servicio.confirmar(null));
+
+        // Assert: rechazo temprano y cero interacciones incluso con argumentos null.
+        assertEquals("Reserva obligatoria", error.getMessage());
+        verify(disponibilidad, never()).estaDisponible(any());
+        verify(repository, never()).guardar(any());
+        verify(notificador, never()).enviarConfirmacion(any());
+        verifyNoInteractions(disponibilidad, repository, notificador);
+    }
+    @Test
     void reservaDisponibleSeConfirmaGuardaYNotifica() {
         // Arrange: respuesta controlada (Stub) y colaboradores observables (Mock).
         Reserva reserva = new Reserva("R-001", "NORMAL");
@@ -53,3 +69,4 @@ class ConfirmacionLab2Test {
         verify(notificador, never()).enviarConfirmacion(any());
     }
 }
+
