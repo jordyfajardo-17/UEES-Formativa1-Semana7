@@ -36,3 +36,7 @@ Los logs 01 a 04 muestran la línea base, la suite antes del experimento, el fal
 ## Uso de IA
 
 OpenAI Codex asistió en lectura de requisitos, diseño de matriz, implementación JUnit, ejecución del experimento, documentación y publicación. Los resultados se respaldan con logs reales. El estudiante debe revisar y comprender cada caso antes de entregar.
+
+## Actividad formativa 2
+
+Continúa este repositorio en la rama `test/lab2-dobles-cobertura`. Conserva las diez pruebas de la actividad 1 y añade tres de confirmación con Mockito. [Guía de evidencias](docs/lab2/01_GUIA_EVIDENCIAS.md), [análisis JaCoCo](docs/02_ANALISIS_COBERTURA_PLANTILLA.md) y [reporte](docs/lab2/02_REPORTE_FORMATIVA2.pdf). La rama se entrega sin fusionar: `main` conserva la actividad 1.
