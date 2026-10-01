@@ -1,25 +1,38 @@
-# UEES UCOM0310 — Semana 7 — Proyecto base Ae6
+# Actividad formativa 1 Diseño de casos y JUnit 5
 
-Proyecto base para las actividades individuales de Semana 7.
+**Estudiante:** Jordy Alessandro Fajardo Figueroa
+**Carrera:** Ingeniería en Ciencias de la Computación
+**Materia:** Diseño de Software UCOM0310
+**Fecha:** 30 de septiembre de 2026
 
-## Requisitos
-- Java 21
-- Maven 3.9+
-- Git
+Repositorio independiente de Ae6: https://github.com/jordyfajardo-17/UEES-Formativa1-Semana7
 
-## Verificación inicial
+## Producto entregado
+
+- [Matriz de nueve casos y trazabilidad](docs/01_MATRIZ_CASOS_PLANTILLA.md)
+- [Suite JUnit con AAA](src/test/java/edu/uees/testing/service/ReservaServiceTest.java)
+- [Reflexión y experimento de frontera](docs/02_REFLEXION_FORMATIVA1.md)
+- [Reporte de entrega](docs/03_REPORTE_FORMATIVA1.pdf)
+- [Logs de ejecución](docs/evidencias)
+
+## Reproducción
+
+Requisitos: JDK 21, Maven 3.9+ y Git. Comprueba `mvn -version` para confirmar que Maven usa Java 21.
+
 ```bash
 mvn clean test
 ```
 
-## Cobertura
-```bash
-mvn clean test
-```
+Resultado final: 10 pruebas, cero fallos, errores u omitidas. Nueve prueban reglas de negocio y una conserva el arranque de JUnit.
 
-Luego abrir:
-`target/site/jacoco/index.html`
+Las dependencias del servicio se construyen con null únicamente para puedeCancelar y calcularTotal, que no las consultan. confirmar no se prueba en este laboratorio; corresponde al laboratorio 2. No se añadieron mocks.
 
-## Regla de trabajo
-No modifiques el código productivo solo para hacer pasar una prueba sin justificar el cambio.
-Primero diseña el caso, luego implementa la prueba y finalmente interpreta el resultado.
+## Experimento controlado
+
+Se sustituyó temporalmente `horasAnticipacion >= 2` por `horasAnticipacion > 2`. `mvn test` produjo exactamente un fallo: dosHorasEsElLimitePermitido. Después se restauró el archivo original y se ejecutó `mvn clean test` con éxito. El defecto temporal no forma parte del código publicado.
+
+Los logs 01 a 04 muestran la línea base, la suite antes del experimento, el fallo intencional y la ejecución final. El pom y los archivos productivos conservan el proyecto base. JaCoCo se genera por la configuración heredada, pero su análisis no es requisito de la actividad 1.
+
+## Uso de IA
+
+OpenAI Codex asistió en lectura de requisitos, diseño de matriz, implementación JUnit, ejecución del experimento, documentación y publicación. Los resultados se respaldan con logs reales. El estudiante debe revisar y comprender cada caso antes de entregar.
